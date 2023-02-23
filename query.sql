@@ -10,7 +10,7 @@ order by Modello;
 -- Una selezione su due o più tabelle con condizioni;
 -- Elenca gli aerei della compagnia aerea Ryanair
 select a.Codice_Aereo
-from Aereo a, Possesso p, Compagnia_Area ca
+from Aereo a, Possesso p, Compagnia_Aerea ca
 where a.Codice_Aereo = p.Codice_Aereo and p.Nome = ca.Nome and ca.Nome = 'Ryanair';
 
 -- Una selezione aggregata su tutti i valori (es. somma di tutti gli stipendi)
@@ -22,7 +22,7 @@ from Compagnia_Aerea;
 -- Elenca il numero di aerei per ogni compagnia aerea
 select ca.Nome, count(*) NumeroAerei
 from Compagnia_Aerea ca, Possesso p
-where ca.Nome = a.Nome
+where ca.Nome = p.Nome
 group by ca.Nome;
 
 -- Una selezione aggregata su raggruppamenti con condizioni (es. dipartimenti la cui somma degli stipendi dei dipendenti è > 100k)
@@ -46,7 +46,13 @@ select * from NumeroBiglietti
 where costo_biglietto = (select max(costo_biglietto) from NumeroBiglietti);
 
 -- Una selezione con operazioni sugli insiemi (IN oppure NOT IN)
---
+-- Elenca gli aeroporti con Ryanair ma non con Alitalia
+select a.Acronimo
+from Aereoporto a, Collocazione c, Compagnia_Aerea ca
+where a.Acronimo = c.Acronimo and c.Nome = ca.Nome and ca.Nome = 'Ryanair' and ca.Nome NOT IN(
+select a.Acronimo
+from Aereoporto a, Collocazione c, Compagnia_Aerea ca
+where a.Acronimo = c.Acronimo and c.Nome = ca.Nome and ca.Nome = 'Alitalia');
 
 -- Una selezione con l’uso appropriato del doppio not Exists
 -- Elenca i clienti che hanno comprato tutti i biglietti dell'aereo "Boeing 777"
@@ -57,5 +63,5 @@ where not exists(
   from Biglietto b
   where not exists(
     select *
-    from Necessità n
+    from Necessita n
     where c.CF = n.CF and b.Aereo_di_Riferimento = n.Aereo_di_Riferimento and b.Aereo_di_Riferimento = "Boeing 777"));
