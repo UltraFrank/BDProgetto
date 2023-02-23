@@ -63,3 +63,40 @@ insert into Biglietto values
 ("4531Y494495984",5,1,50),
 ("483T494C959846",11,3,60),
 ("484402Z39P3930",15,2,80);
+
+insert into Necessità values
+("4840A393R33839",8,3,"MNCMND80A41H501L"),
+("4530F393P65984",6,1,"TRNRNT80A41H501V"),
+("4531Y494495984",5,1,"ZTTGRD80A41H501N"),
+("483T494C959846",11,3,"FRRSNT80A41H501J"),
+("484402Z39P3930",15,2,"BTTFNC80A01H501W");
+
+insert into Aereo values
+("4840A393R33839","Nazionale","Airbus A320","00001",NULL),
+("4530F393P65984","Nazionale","Boeing 777","00001",NULL),
+("4531Y494495984","Internazionale","Boeing 777",NULL,"00002"),
+("483T494C959846","Internazionale","Boeing 500",NULL,"00002"),
+("484402Z39P3930","Nazionale","Airbus A320","00001",NULL);
+
+insert into Possesso values
+("4840A393R33839","Ryanair"),
+("4530F393P65984","Easyjet"),
+("4531Y494495984","Wizzair"),
+("483T494C959846","VoloTea"),
+("484402Z39P3930","Alitalia");
+
+insert into Prenotazione values
+("4840A393R33839",8,3,"4840A393R33839","01/01/2023"),
+("4530F393P65984",6,1,"4530F393P65984","01/01/2023"),
+("4531Y494495984",5,1,"4531Y494495984","01/01/2023"),
+("483T494C959846",11,3,"483T494C959846","01/01/2023"),
+("484402Z39P3930",15,2,"484402Z39P3930","01/01/2023");
+
+insert into Hangar_Esclusivi values
+("431"),
+("322"),
+("061"),
+("422"),
+("501");
+
+
